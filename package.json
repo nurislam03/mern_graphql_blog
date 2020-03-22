@@ -4,6 +4,8 @@
   "description": "Practice project of Graphql with MERN stack.",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
+    "app": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,5 +22,8 @@
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
     "mongoose": "^5.9.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
   }
 }
