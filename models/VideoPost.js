@@ -5,7 +5,7 @@ const VideoPostSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  videolink: {
+  video_link: {
     type: String,
     required: true
   },

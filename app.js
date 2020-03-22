@@ -1,7 +1,20 @@
 const express = require('express');
+const graphqlHTTP = require('express-graphql');
+const cors = require("cors");
+
+const schema = require('./graphql/postSchemas');
 const connectDB = require('./config/db');
 
 const app = express();
+
+app.use(cors());
+
+app.use('/graphql', graphqlHTTP({
+    schema,
+    rootValue: global,
+    graphiql: true
+}));
+
 
 // Database Connection
 connectDB();
