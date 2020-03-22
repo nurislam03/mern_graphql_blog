@@ -71,6 +71,37 @@ var queryType = new GraphQLObjectType({
     }
   });
 
+
+
+// GraphQL mutation to perform CRUD operations
+  var mutation = new GraphQLObjectType({
+    name: 'Mutation',
+    fields: function () {
+      return {
+        addTextPost: {
+          type: textPostType,
+          args: {
+            title: {
+              type: new GraphQLNonNull(GraphQLString)
+            },
+            description: {
+              type: new GraphQLNonNull(GraphQLString)
+            }
+          },
+          resolve: function (root, params) {
+            const textPostModel = new TextPostModel(params);
+            const newTextPost = textPostModel.save();
+            if (!newTextPost) {
+              throw new Error('Error');
+            }
+            return newTextPost
+          }
+        }
+      }
+    }
+  });
+
   module.exports = new GraphQLSchema({
-    query: queryType
+    query: queryType,
+    mutation: mutation
   });
