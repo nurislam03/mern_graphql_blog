@@ -27,17 +27,25 @@ class ShowTextPostDetails extends Component {
                     return (
                       <div className="ShowTextPostDetails">
                           <div className="container">
-                            <div className="panel panel-default">
-                                <div className="panel-heading">
-                                <h4><Link to="/">Text Post List</Link></h4>
-                                    <h3 className="panel-title">
-                                    {data.textPost.title}
-                                    </h3>
-                                </div>
+                            <div className="row">
+                              <div className="col-md-10 m-auto">
+                                <br /> <br />
+                                <Link to="/" className="btn  btn-outline-info float-left">
+                                  Show Text Post List
+                                </Link>
+                              </div>
+                              <br />
+
+                              <div className="col-md-8 m-auto">
+                                <h1 className="display-4 text-center">{data.textPost.title}</h1>
+                                <br /> <br /> <hr /> <br />
+                              </div>
+
                                 <div className="panel-body">
                                     <dl>
-                                        <dt>Description:</dt>
+                                        {/* <dt>Description:</dt> */}
                                         <dd>{data.textPost.description}</dd>
+                                        <hr /> <br />
                                         <dt>Updated:</dt>
                                         <dd>{data.textPost.updated_date}</dd>
                                     </dl>
