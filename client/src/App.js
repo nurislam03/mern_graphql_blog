@@ -5,6 +5,11 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 
 
+import ShowTextPostList from './components/textpost/ShowTextPostList';
+import CreateTextPost from './components/textpost/CreateTextPost';
+import ShowTextPostDetails from './components/textpost/ShowTextPostDetails';
+
+
 const client = new ApolloClient({ uri: 'http://localhost:8082/graphql' });
 
 
@@ -14,9 +19,9 @@ class App extends Component {
       <ApolloProvider client={client}>
         <Router>
           <div className="container">
-            {/* <Route exact path='/' component={ShowBookList} /> */}
-            {/* <Route path='/create-book' component={CreateBook} /> */}
-            {/* <Route path='/show-book/:id' component={ShowBookDetails} /> */}
+            <Route exact path='/' component={ShowTextPostList} />
+            <Route path='/create-textpost' component={CreateTextPost} />
+            <Route path='/show-textpost/:id' component={ShowTextPostDetails} />
           </div>
         </Router>
       </ApolloProvider>
