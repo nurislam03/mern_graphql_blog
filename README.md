@@ -1,5 +1,10 @@
 # mern_graphql_blog
-Practice project following Graphql with MERN stack.
+
+## Install all dependencies in both server (inside mern_graphql_blog/ directory) and client (inside mern_graphql_blog/client/ director) following the command
+
+```sh
+$ npm install
+```
 
 ### To Run the app (Server & Client concurrently)
 
