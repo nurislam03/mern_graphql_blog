@@ -41,15 +41,16 @@ class ShowTextPostDetails extends Component {
                                 <br /> <br /> <hr /> <br />
                               </div>
 
-                                <div className="panel-body">
-                                    <dl>
-                                        {/* <dt>Description:</dt> */}
-                                        <dd>{data.textPost.description}</dd>
-                                        <hr /> <br />
-                                        <dt>Updated:</dt>
-                                        <dd>{data.textPost.updated_date}</dd>
-                                    </dl>
-                                </div>
+
+                            </div>
+                            <div className="panel-body">
+                                <dl>
+                                    {/* <dt>Description:</dt> */}
+                                    <dd>{data.textPost.description}</dd>
+                                    <hr /> <br />
+                                    <dt>Updated:</dt>
+                                    <dd>{data.textPost.updated_date}</dd>
+                                </dl>
                             </div>
                         </div>
                       </div>
