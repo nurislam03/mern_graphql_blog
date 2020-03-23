@@ -1,6 +1,6 @@
 # mern_graphql_blog
 
-## Install all dependencies in both server (inside mern_graphql_blog/ directory) and client (inside mern_graphql_blog/client/ director) following the command
+### Install all dependencies in both server (inside mern_graphql_blog/) & client (inside mern_graphql_blog/client/) directory following the command
 
 ```sh
 $ npm install
