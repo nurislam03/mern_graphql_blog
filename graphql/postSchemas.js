@@ -11,7 +11,7 @@ const {
 const GraphQLDate = require('graphql-date');
 
 const TextPostModel = require('../models/TextPost');
-// const VideoPostModel = require('../models/VideoPost');
+const VideoPostModel = require('../models/VideoPost');
 
 
 // GraphQL Object Type for textPostType
@@ -146,6 +146,28 @@ var queryType = new GraphQLObjectType({
               throw new Error('Error');
             }
             return newTextPost
+          }
+        },
+        addVideoPost: {
+          type: videoPostType,
+          args: {
+            title: {
+              type: new GraphQLNonNull(GraphQLString)
+            },
+            description: {
+              type: new GraphQLNonNull(GraphQLString)
+            },
+            video_link: {
+              type: new GraphQLNonNull(GraphQLString)
+            }
+          },
+          resolve: function (root, params) {
+            const videoPostModel = new VideoPostModel(params);
+            const newVideoPost = videoPostModel.save();
+            if (!newVideoPost) {
+              throw new Error('Error');
+            }
+            return newVideoPost
           }
         }
       }
