@@ -36,6 +36,31 @@ const textPostType = new GraphQLObjectType({
 });
 
 
+// GraphQL Object Type for videoPostType
+const videoPostType = new GraphQLObjectType({
+  name: 'videopost',
+  fields: function() {
+      return {
+          _id: {
+              type: GraphQLString
+          },
+          title: {
+              type: GraphQLString
+          },
+          description: {
+              type: GraphQLString
+          },
+          video_link: {
+            type: GraphQLString
+          },
+          updated_date: {
+              type: GraphQLDate
+          }
+      }
+  }
+});
+
+
 // GraphQL queryType for textPostType
 var queryType = new GraphQLObjectType({
     name: 'Query',
@@ -65,6 +90,32 @@ var queryType = new GraphQLObjectType({
               throw new Error('Error')
             }
             return textPostDetails
+          }
+        },
+        videoPosts: {
+          type: new GraphQLList(videoPostType),
+          resolve: function () {
+            const videoPosts = VideoPostModel.find().exec()
+            if (!videoPosts) {
+              throw new Error('Error')
+            }
+            return videoPosts
+          }
+        },
+        videoPost: {
+          type: videoPostType,
+          args: {
+            id: {
+              name: '_id',
+              type: GraphQLString
+            }
+          },
+          resolve: function (root, params) {
+            const videoPostDetails = VideoPostModel.findById(params.id).exec()
+            if (!videoPostDetails) {
+              throw new Error('Error')
+            }
+            return videoPostDetails
           }
         }
       }
