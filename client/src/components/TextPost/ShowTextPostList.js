@@ -36,6 +36,9 @@ class ShowTextPostList extends Component {
                                 </div>
 
                                 <div className="col-md-11">
+                                    <Link to="/show-videopostlist" className="btn  btn-outline-info float-left">
+                                        Show Video Post List
+                                    </Link>
                                     <Link to="/create-textpost" className="btn btn-outline-info float-right">
                                         + Add New Post
                                     </Link>

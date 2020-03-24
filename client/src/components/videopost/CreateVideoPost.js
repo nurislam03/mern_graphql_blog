@@ -5,12 +5,14 @@ import gql from "graphql-tag";
 import { Mutation } from "react-apollo";
 
 
-const ADD_TEXT_POST = gql`
-    mutation AddTextPost(
+const ADD_VIDEO_POST = gql`
+    mutation AddVideoPost(
         $title: String!,
+        $video_link: String!,
         $description: String!) {
-        addTextPost(
+        addVideoPost(
             title: $title,
+            video_link: $video_link,
             description: $description) {
             _id
         }
@@ -18,25 +20,25 @@ const ADD_TEXT_POST = gql`
 `;
 
 
-class CreateTextPost extends Component {
+class CreateVideoPost extends Component {
 
   render() {
-    let title, description;
+    let title, video_link, description;
 
     return (
-        <Mutation mutation={ADD_TEXT_POST} onCompleted={() => this.props.history.push('/')}>
+        <Mutation mutation={ADD_VIDEO_POST} onCompleted={() => this.props.history.push('/')}>
             {(addTextPost, { loading, error }) => (
-                <div className="CreateTextPost">
+                <div className="CreateVideoPost">
                 <div className="container">
                     <div className="row">
                     <div className="col-md-8 m-auto">
                         <br />
-                        <Link to="/" className="btn btn-outline-info float-left">
-                            Text Post List
+                        <Link to="/show-videopostlist" className="btn btn-outline-info float-left">
+                            Video Post List
                         </Link>
                     </div>
                     <div className="col-md-8 m-auto">
-                        <h1 className="display-4 text-center">Add Text Post</h1>
+                        <h1 className="display-4 text-center">Add Video Post</h1>
                         <p className="lead text-center">
                             create new post
                         </p>
@@ -44,8 +46,9 @@ class CreateTextPost extends Component {
                         <form onSubmit={e => {
                             e.preventDefault();
 
-                            addTextPost({ variables: { title: title.value, description: description.value } });
+                            addTextPost({ variables: { title: title.value, video_link: video_link.value, description: description.value } });
                             title.value = "";
+                            video_link = "";
                             description.value = "";
                         }}>
 
@@ -63,9 +66,22 @@ class CreateTextPost extends Component {
                         <br />
 
                         <div className='form-group'>
+                            <input
+                            type='text'
+                            placeholder='Paste video link here'
+                            name='video_link'
+                            className='form-control'
+                            ref={node => {
+                                video_link = node;
+                            }}
+                            />
+                        </div>
+                        <br />
+
+                        <div className='form-group'>
                             <textarea
                             type='text'
-                            placeholder='Write you post here'
+                            placeholder='describe your post here'
                             name='description'
                             className='form-control'
                             ref={node => {
@@ -92,4 +108,4 @@ class CreateTextPost extends Component {
   }
 }
 
-export default CreateTextPost;
+export default CreateVideoPost;
