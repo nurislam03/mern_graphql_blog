@@ -26,7 +26,7 @@ class CreateVideoPost extends Component {
     let title, video_link, description;
 
     return (
-        <Mutation mutation={ADD_VIDEO_POST} onCompleted={() => this.props.history.push('/')}>
+        <Mutation mutation={ADD_VIDEO_POST} onCompleted={() => this.props.history.push('/show-videopostlist')}>
             {(addTextPost, { loading, error }) => (
                 <div className="CreateVideoPost">
                 <div className="container">
